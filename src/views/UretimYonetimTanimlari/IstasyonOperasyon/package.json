@@ -1,0 +1,6 @@
+{
+  "name": "IstasyonOperasyon",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./IstasyonOperasyon.js"
+}

@@ -6,6 +6,9 @@ import App from './App';
 // disable ServiceWorker
 // import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <App />, 
+    document.getElementById('root')
+);
 // disable ServiceWorker
 // registerServiceWorker();
