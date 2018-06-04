@@ -23,8 +23,14 @@ import DefaultFooter from './DefaultFooter';
 import DefaultHeader from './DefaultHeader';
 
 class DefaultLayout extends Component {
+  componentDidMount() {
+    const myData = localStorage.getItem('myData');
+    if (!myData || myData === null) {
+      window.location.href = '#/login';
+    }
+  }
+
   render() {
-    console.log(routes);
     return (
       <div className="app">
         <AppHeader fixed>

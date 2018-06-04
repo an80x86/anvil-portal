@@ -1,49 +1,29 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import { Button, Card, CardBody, CardGroup, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
 import PreloaderIcon from 'react-preloader-icon';
-import Puff from 'react-preloader-icon/loaders/Puff';
+import Oval from 'react-preloader-icon/loaders/Oval';
+import {emailChanged, passwordChanged, loginUser, forgotUser, forgotUserClose, CloseMsgError } from '../../../actions';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
+  
+  onSubmit = (evt) => {
+    evt.preventDefault()
 
-    this.state = {
-      loading: false,
-      danger: false,
-      username: '',
-      password: ''
-    };
-
-    this.onForgot = this.onForgot.bind(this);
-    this.updateUsername = this.updateUsername.bind(this);
-    this.updatePassword = this.updatePassword.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    const { email, password } = this.props
+    this.props.loginUser({ email, password })
   }
 
-  onForgot() {
-    this.setState({
-      danger: !this.state.danger,
-    });
+  toggleHelper = () => {
+    this.props.forgotUser()
   }
 
-  updateUsername(e) {
-    this.setState({username: e.target.value});
+  toggleHelperClose = () => {
+    this.props.forgotUserClose()
   }
 
-  updatePassword(e) {
-    this.setState({password: e.target.value});
-  }
-
-  componentWillMount() {
-    this.setState({ username: ' ', password: ''});
-  }
-
-  onSubmit(event) {
-    event.preventDefault();
-    this.setState({
-      loading: !this.state.loading,
-    });
-    console.log('not now later');
+  CloseMsgError = () => {
+    this.props.CloseMsgError()  
   }
 
   render() {
@@ -64,7 +44,7 @@ class Login extends Component {
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="text" value = {this.state.username} onChange = {this.updateUsername} placeholder="Username" disabled = {(this.state.loading) ? "disabled" : ""} />
+                        <Input type="text"value={this.props.email} onChange={email => this.props.emailChanged(email)} placeholder="Username" required/>
                       </InputGroup>
                       <InputGroup className="mb-4">
                         <InputGroupAddon addonType="prepend">
@@ -72,28 +52,39 @@ class Login extends Component {
                             <i className="icon-lock"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="password" value = {this.state.password} onChange = {this.updatePassword} placeholder="Password" disabled = {(this.state.loading) ? "disabled" : ""}/>
+                        <Input type="password" value={this.props.password} onChange={password => this.props.passwordChanged(password)} placeholder="Password" required/>
                       </InputGroup>
                       <Row>
                         <Col xs="6">
-                          { this.state.loading ? 
-                            <PreloaderIcon loader={Puff} size={60} strokeWidth={8} strokeColor="#006064" duration={800} /> 
-                            :
-                            <Button color="primary" className="px-4" >Login</Button> 
+                          {
+                            !this.props.loading ? 
+                              <Button color="primary" className="px-4" >Login</Button>
+                            : 
+                            <PreloaderIcon loader={Oval} size={30} strokeWidth={8} strokeColor="#006064" duration={800} /> 
                           }
-                        </Col>
-                        <Col xs="6" className="text-right">
-                          <Button onClick = {this.onForgot} color="link" className="px-0">Forgot password?</Button>
-                          <Modal isOpen={this.state.danger} toggle={this.toggleDanger}
+                          <Modal isOpen={this.props.error}
                                 className={'modal-danger ' + this.props.className}>
-                            <ModalHeader toggle={this.toggleDanger}>Forgot password</ModalHeader>
+                            <ModalHeader toggle={this.CloseMsgError}>Wrong Password</ModalHeader>
                             <ModalBody>
-                              We are unable to assist you right now, please contact the authorities.
+                              Username or password is incorrect!
                             </ModalBody>
                             <ModalFooter>
-                              <Button color="danger" onClick={this.onForgot}>Ok</Button>{' '}
+                              <Button color="danger" onClick={this.CloseMsgError}>Close</Button>
                             </ModalFooter>
                           </Modal>
+                        </Col>
+                        <Col xs="6" className="text-right">
+                          <Button onClick={this.toggleHelper} color="link" className="px-0">Forgot password?</Button>
+                          <Modal isOpen={this.props.helper} toggle={this.toggleHelperClose}
+                              className={'modal-success ' + this.props.className}>
+                            <ModalHeader toggle={this.toggleHelperClose}>Forgot Password?</ModalHeader>
+                            <ModalBody>
+                              We can not help with password reminders. Please contact your administrator.
+                            </ModalBody>
+                            <ModalFooter>
+                              <Button color="success" onClick={this.toggleHelperClose}>Close</Button>
+                          </ModalFooter>
+                        </Modal>
                         </Col>
                       </Row>
                     </CardBody>
@@ -104,8 +95,19 @@ class Login extends Component {
           </Row>
         </Container>
       </div>
-    );
+    )
   }
 }
 
-export default Login;
+const mapStateToProps = ({ logincheckResponse }) => {
+  const {email, password, loading, helper, error} = logincheckResponse;
+  return {
+      email,
+      password,
+      loading, 
+      helper,
+      error
+  }
+}
+
+export default connect(mapStateToProps,{emailChanged, passwordChanged, loginUser, forgotUser, forgotUserClose, CloseMsgError })(Login);

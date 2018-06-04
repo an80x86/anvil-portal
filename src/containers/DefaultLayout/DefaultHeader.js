@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Badge, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import { AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 import logo from   '../../assets/img/brand/image2vector.svg'
+import { LogoffApp } from '../../actions';
+
 
 const propTypes = {
   children: PropTypes.node,
@@ -12,6 +15,10 @@ const propTypes = {
 const defaultProps = {};
 
 class DefaultHeader extends Component {
+  helplerClose = () => {
+    this.props.LogoffApp();
+  }
+  
   render() {
 
     // eslint-disable-next-line
@@ -48,7 +55,7 @@ class DefaultHeader extends Component {
               <DropdownItem><i className="fa fa-usd"></i> Payments<Badge color="secondary">42</Badge></DropdownItem>
               <DropdownItem><i className="fa fa-file"></i> Projects<Badge color="primary">42</Badge></DropdownItem>
               <DropdownItem divider />
-              <DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
+              <DropdownItem onClick={this.helplerClose}><i className="fa fa-lock"></i> Logout</DropdownItem>
             </DropdownMenu>
           </AppHeaderDropdown>
         </Nav>
@@ -60,4 +67,5 @@ class DefaultHeader extends Component {
 DefaultHeader.propTypes = propTypes;
 DefaultHeader.defaultProps = defaultProps;
 
-export default DefaultHeader;
+export default connect(null,{ LogoffApp })(DefaultHeader);
+
