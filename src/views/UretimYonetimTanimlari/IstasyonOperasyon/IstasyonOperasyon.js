@@ -1,8 +1,29 @@
 import React, { Component } from 'react';
 import { Alert, Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
+import { DataTable } from 'react-data-components';
 
 class IstasyonOperasyon extends Component {
+
   render() {
+    var data = [];
+    var names = [ 'Carlos', 'Juan', 'Jesus', 'Alberto', 'John' ];
+    var cities = [ 'Chicago', 'Tampico', 'San Francisco', 'Mexico City', 'Boston', 'New York' ];
+    var addresses = [ '333 West Wacker Drive', '1931 Insurgentes Sur', '1 Lombard Street', '55 Av Hidalgo'];
+    for (var i = 0; i < 1000; i++) {
+      data.push({
+        id: i,
+        name: names[~~(Math.random() * names.length)],
+        city: cities[~~(Math.random() * cities.length)],
+        address: addresses[~~(Math.random() * addresses.length)]
+      });
+    }
+
+    var columns = [
+      { title: 'Name', prop: 'name'  },
+      { title: 'City', prop: 'city' },
+      { title: 'Address', prop: 'address' }
+    ];
+
     return (
       <div className="animated fadeIn">
         <Card id="new47">
@@ -10,173 +31,17 @@ class IstasyonOperasyon extends Component {
             <i className="fa fa-font-awesome"></i> 55 New Icons in 4.7
           </CardHeader>
           <CardBody>
-            <Row className="text-center">
-              <Col className="fa-hover" xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-address-book fa-lg mt-4"></i><br />address-book
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-address-book-o fa-lg mt-4"></i><br />address-book-o
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-address-card fa-lg mt-4"></i><br />address-card
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-address-card-o fa-lg mt-4"></i><br />address-card-o
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-bandcamp fa-lg mt-4"></i><br />bandcamp
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-bath fa-lg mt-4"></i><br />bath
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-bathtub fa-lg mt-4"></i><br />bathtub <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-drivers-license fa-lg mt-4"></i><br />drivers-license <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-drivers-license-o fa-lg mt-4"></i><br />drivers-license-o <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-eercast fa-lg mt-4"></i><br />eercast
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-envelope-open fa-lg mt-4"></i><br />envelope-open
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-envelope-open-o fa-lg mt-4"></i><br />envelope-open-o
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-etsy fa-lg mt-4"></i><br />etsy
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-free-code-camp fa-lg mt-4"></i><br />free-code-camp
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-grav fa-lg mt-4"></i><br />grav
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-handshake-o fa-lg mt-4"></i><br />handshake-o
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-id-badge fa-lg mt-4"></i><br />id-badge
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-id-card fa-lg mt-4"></i><br />id-card
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-id-card-o fa-lg mt-4"></i><br />id-card-o
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-imdb fa-lg mt-4"></i><br />imdb
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-linode fa-lg mt-4"></i><br />linode
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-meetup fa-lg mt-4"></i><br />meetup
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-microchip fa-lg mt-4"></i><br />microchip
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-podcast fa-lg mt-4"></i><br />podcast
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-quora fa-lg mt-4"></i><br />quora
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-ravelry fa-lg mt-4"></i><br />ravelry
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-s15 fa-lg mt-4"></i><br />s15 <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-shower fa-lg mt-4"></i><br />shower
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-snowflake-o fa-lg mt-4"></i><br />snowflake-o
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-superpowers fa-lg mt-4"></i><br />superpowers
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-telegram fa-lg mt-4"></i><br />telegram
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer fa-lg mt-4"></i><br />thermometer <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-0 fa-lg mt-4"></i><br />thermometer-0 <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-1 fa-lg mt-4"></i><br />thermometer-1 <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-2 fa-lg mt-4"></i><br />thermometer-2 <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-3 fa-lg mt-4"></i><br />thermometer-3 <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-4 fa-lg mt-4"></i><br />thermometer-4 <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-empty fa-lg mt-4"></i><br />thermometer-empty
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-full fa-lg mt-4"></i><br />thermometer-full
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-half fa-lg mt-4"></i><br />thermometer-half
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-quarter fa-lg mt-4"></i><br />thermometer-quarter
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-thermometer-three-quarters fa-lg mt-4"></i><br />thermometer-three-quarters
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-times-rectangle fa-lg mt-4"></i><br />times-rectangle <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-times-rectangle-o fa-lg mt-4"></i><br />times-rectangle-o <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-user-circle fa-lg mt-4"></i><br />user-circle
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-user-circle-o fa-lg mt-4"></i><br />user-circle-o
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-user-o fa-lg mt-4"></i><br />user-o
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-vcard fa-lg mt-4"></i><br />vcard <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-vcard-o fa-lg mt-4"></i><br />vcard-o <span className="text-muted">(alias)</span>
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-window-close fa-lg mt-4"></i><br />window-close
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-window-close-o fa-lg mt-4"></i><br />window-close-o
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-window-maximize fa-lg mt-4"></i><br />window-maximize
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-window-minimize fa-lg mt-4"></i><br />window-minimize
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-window-restore fa-lg mt-4"></i><br />window-restore
-              </Col>
-              <Col xs="6" sm="4" md="3" lg="2">
-                <i className="fa fa-wpexplorer fa-lg mt-4"></i><br />wpexplorer
-              </Col>
-            </Row>
+
+            <DataTable
+              className="container"
+              keys="id"
+              columns={columns}
+              initialData={data}
+              initialPageLength={5}
+              initialSortBy={{ prop: 'city', order: 'descending' }}
+              pageLengthOptions={[ 5, 20, 50 ]}
+            />
+            
           </CardBody>
         </Card>
         <Card id="new">
