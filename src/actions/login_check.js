@@ -1,4 +1,6 @@
 import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_FORGOT_USER, LOGIN_FORGOT_USER_CLOSE, LOGIN_ERROR_CLOSE } from './types'
+import axios from 'axios';
+import { where } from 'underscore';
 
 export const emailChanged = (email) => {
     return(dispatch) => {
@@ -23,18 +25,23 @@ export const loginUser = ({email, password}) => {
     return (dispatch) => {
         dispatch({type: LOGIN_USER}); // login islemine basla loading'i baslat
 
-        setTimeout(function() { 
-            if (email==='' || password ==='') {
-                alert('Her iki alanda dolu olmalı!');
-            } else {
-                if (email==='admin' && password ==='1') {
+        if (email==='' || password ==='') {
+            alert('Her iki alanda dolu olmalı!');
+        } else {
+            axios.get('http://localhost:3004/users')
+            .then(function (response) {
+                let sonuc = where(response.data, {username: email, password: password});
+                if (sonuc.length>0) {
                     loginSuccess(dispatch, email)
                     window.location.href = "#/"
                 } else {
                     loginFail(dispatch, email, password)
                 }
-            }
-        }, 1000)
+            })
+            .catch(function (error) {
+                loginFail(dispatch, email, password)
+            });
+        }
     }
 }
 
