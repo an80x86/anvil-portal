@@ -7,12 +7,26 @@ import Oval from 'react-preloader-icon/loaders/Oval';
 import { getRecords } from '../../../actions';
 
 class IstasyonOperasyon extends Component {
+  constructor(props){
+    super(props);
+    this.resolveTitle=this.resolveTitle.bind(this);
+  }
 
   componentWillMount() {
     this.props.getRecords();
   }
 
+  resolveTitle(request) {
+    let response = [];
+    for (var name in request) {
+      response.push(name);
+    }
+    return response;
+  }
+
   render() {
+    let myObject = this.props.response && this.props.response.length > 0 ? this.resolveTitle(this.props.response[0]) : null;
+
     return (
       <div className="animated fadeIn">
         <Row>
@@ -24,31 +38,35 @@ class IstasyonOperasyon extends Component {
               <CardBody>
                 {
                   this.props.loading ?
-                <PreloaderIcon loader={Oval} size={30} strokeWidth={8} strokeColor="#006064" duration={800} /> 
-                : 
-                <Table responsive striped>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Operation</th>
-                      <th>Shift</th>
-                      <th>Capatity</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      this.props.response && this.props.response.length > 0 ? 
-                      this.props.response.map( item => (
-                        <tr key={item.id}>
-                          <td>{item.name}</td>
-                          <td>{item.operation}</td>
-                          <td>{item.shift}</td>
-                          <td>{item.capacity}</td>
-                        </tr>
-                       )) : null
-                    }
-                  </tbody>
-                </Table>
+                  <PreloaderIcon loader={Oval} size={30} strokeWidth={8} strokeColor="#006064" duration={800} /> 
+                  : 
+                  <Table responsive striped>
+                    <thead>
+                      <tr>
+                        {
+                          myObject && myObject.length > 0 ? 
+                          myObject.map( item => (
+                            <th key={item}>{item}</th>
+                          )) : null
+                        }
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        this.props.response && this.props.response.length > 0 ? 
+                        this.props.response.map( item => (
+                          <tr key={item.id}>
+                            <td>{item.id}</td>
+                            <td>{item.name}</td>
+                            <td>{item.operation}</td>
+                            <td>{item.shift}</td>
+                            <td>{item.capacity}</td>
+                            <td>{item.ability}</td>
+                          </tr>
+                        )) : null
+                      }
+                    </tbody>
+                  </Table>
                 }
 
                 <Pagination>
