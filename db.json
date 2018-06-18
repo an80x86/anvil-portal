@@ -432,5 +432,111 @@
           "bs": "target end-to-end models"
         }
       }
+    ],
+    "stationoperations" : [
+      {
+        "id": 1,
+        "name": "Taşlama 1",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 2,
+        "name": "Taşlama 2",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 3,
+        "name": "Taşlama 3",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 4,
+        "name": "Taşlama 4",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 5,
+        "name": "Taşlama 5",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 6,
+        "name": "Taşlama 6",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 7,
+        "name": "Taşlama 7",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 8,
+        "name": "Taşlama 8",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 9,
+        "name": "Taşlama 9",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 10,
+        "name": "Taşlama 10",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 11,
+        "name": "Taşlama 11",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 12,
+        "name": "Taşlama 12",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 13,
+        "name": "Taşlama 13",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      }
     ]
 }
