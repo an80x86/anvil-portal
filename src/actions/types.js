@@ -11,5 +11,5 @@ export const LOGIN_ERROR_CLOSE = 'LOGIN_ERROR_CLOSE';
 export const CLOSE_APP = 'CLOSE_APP';
 
 export const WAIT_SO = 'WAIT_SO';
-export const EXEC_SO = 'EXEC_SO';
+export const SELECT_PAGE_SO = 'SELECT_PAGE_SO';
 export const ALL_SO = 'ALL_SO';

@@ -1,31 +1,22 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
-import { Pagination, PaginationItem, PaginationLink, Table } from 'reactstrap';
 import PreloaderIcon from 'react-preloader-icon';
 import Oval from 'react-preloader-icon/loaders/Oval';
 import { getRecords } from '../../../actions';
+import { MyTable, MyPages } from    '../../../components/grid/mytable';
 
 class IstasyonOperasyon extends Component {
-  constructor(props){
-    super(props);
-    this.resolveTitle=this.resolveTitle.bind(this);
-  }
 
   componentWillMount() {
-    this.props.getRecords();
+    this.props.getRecords(1);
   }
 
-  resolveTitle(request) {
-    let response = [];
-    for (var name in request) {
-      response.push(name);
-    }
-    return response;
+  handleClick(e) {
+    this.props.getRecords(parseInt(e.target.id.replace('button','')));
   }
 
   render() {
-    let myObject = this.props.response && this.props.response.length > 0 ? this.resolveTitle(this.props.response[0]) : null;
 
     return (
       <div className="animated fadeIn">
@@ -40,45 +31,13 @@ class IstasyonOperasyon extends Component {
                   this.props.loading ?
                   <PreloaderIcon loader={Oval} size={30} strokeWidth={8} strokeColor="#006064" duration={800} /> 
                   : 
-                  <Table responsive striped>
-                    <thead>
-                      <tr>
-                        {
-                          myObject && myObject.length > 0 ? 
-                          myObject.map( item => (
-                            <th key={item}>{item}</th>
-                          )) : null
-                        }
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {
-                        this.props.response && this.props.response.length > 0 ? 
-                        this.props.response.map( item => (
-                          <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.name}</td>
-                            <td>{item.operation}</td>
-                            <td>{item.shift}</td>
-                            <td>{item.capacity}</td>
-                            <td>{item.ability}</td>
-                          </tr>
-                        )) : null
-                      }
-                    </tbody>
-                  </Table>
+                  <MyTable data={this.props.response} /> 
                 }
-
-                <Pagination>
-                  <PaginationItem disabled><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>
-                  <PaginationItem active>
-                    <PaginationLink tag="button">1</PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem><PaginationLink tag="button">2</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink next tag="button">Next</PaginationLink></PaginationItem>
-                </Pagination>
+                <MyPages seat={this.props.seat} 
+                  pages={this.props.pages} 
+                  onClickPrev={() => this.props.getRecords(this.props.seat-1)} 
+                  onClick={this.handleClick.bind(this)}
+                  onClickNext={() => this.props.getRecords(this.props.seat+1)} />
               </CardBody>
             </Card>
           </Col>
@@ -89,12 +48,14 @@ class IstasyonOperasyon extends Component {
 }
 
 const mapStateToProps = ({ stationoperationResponse }) => {
-  const { response, loading, error } = stationoperationResponse;
+  const { response, loading, error, pages, seat } = stationoperationResponse;
 
   return {
     response, 
     loading, 
-    error
+    error,
+    pages,
+    seat
   }
 }
 

@@ -537,6 +537,126 @@
         "shift": "0700",
         "capacity": "70%",
         "ability": "100"
+      },
+      {
+        "id": 14,
+        "name": "Taşlama 14",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 15,
+        "name": "Taşlama 15",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 16,
+        "name": "Taşlama 16",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 17,
+        "name": "Taşlama 17",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 18,
+        "name": "Taşlama 18",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 19,
+        "name": "Taşlama 19",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 20,
+        "name": "Taşlama 20",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 21,
+        "name": "Taşlama 21",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 22,
+        "name": "Taşlama 22",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 23,
+        "name": "Taşlama 23",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 24,
+        "name": "Taşlama 24",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 25,
+        "name": "Taşlama 25",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 26,
+        "name": "Taşlama 26",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 27,
+        "name": "Taşlama 27",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
+      },
+      {
+        "id": 28,
+        "name": "Taşlama 28",
+        "operation": "Taşlama",
+        "shift": "0700",
+        "capacity": "70%",
+        "ability": "100"
       }
     ]
 }
