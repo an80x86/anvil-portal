@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
-import PreloaderIcon from 'react-preloader-icon';
-import Oval from 'react-preloader-icon/loaders/Oval';
 import { getRecords } from '../../../actions';
-import { MyTable, MyPages } from    '../../../components/grid/mytable';
+import { MyGrid } from    '../../../components/grid/';
 
 class IstasyonOperasyon extends Component {
 
@@ -13,7 +11,7 @@ class IstasyonOperasyon extends Component {
   }
 
   handleClick(e) {
-    this.props.getRecords(parseInt(e.target.id.replace('button','')));
+    this.props.getRecords(parseInt(e.target.id.replace('button',''),10));
   }
 
   render() {
@@ -27,17 +25,15 @@ class IstasyonOperasyon extends Component {
                 <i className="fa fa-align-justify"></i> İstasyon Tanımları
               </CardHeader>
               <CardBody>
-                {
-                  this.props.loading ?
-                  <PreloaderIcon loader={Oval} size={30} strokeWidth={8} strokeColor="#006064" duration={800} /> 
-                  : 
-                  <MyTable data={this.props.response} /> 
-                }
-                <MyPages seat={this.props.seat} 
-                  pages={this.props.pages} 
+                <MyGrid 
+                  loading={this.props.loading} 
+                  response={this.props.response} 
+                  seat={this.props.seat}
+                  pages={this.props.pages}
                   onClickPrev={() => this.props.getRecords(this.props.seat-1)} 
                   onClick={this.handleClick.bind(this)}
-                  onClickNext={() => this.props.getRecords(this.props.seat+1)} />
+                  onClickNext={() => this.props.getRecords(this.props.seat+1)}
+                />
               </CardBody>
             </Card>
           </Col>
