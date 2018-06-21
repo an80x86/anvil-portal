@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
-export class MyPages extends Component {
+export class MyPager extends Component {
     render() {
         return (
             <Pagination>
@@ -15,9 +15,9 @@ export class MyPages extends Component {
             this.props.pages && this.props.pages.length > 0 ? 
             this.props.pages.map( item => (
                 item === this.props.seat ? 
-                <PaginationItem key={item} active><PaginationLink id={`button${item}`} tag="button" key={item} onClick={this.props.onClick}>{item}</PaginationLink></PaginationItem> 
+                <PaginationItem key={item} active><PaginationLink id={`pager-${item}`} tag="button" key={item} onClick={this.props.onClick}>{item}</PaginationLink></PaginationItem> 
                 : 
-                <PaginationItem key={item}><PaginationLink  id={`button${item}`} tag="button" key={item} onClick={this.props.onClick}>{item}</PaginationLink></PaginationItem>
+                <PaginationItem key={item}><PaginationLink  id={`pager-${item}`} tag="button" key={item} onClick={this.props.onClick}>{item}</PaginationLink></PaginationItem>
             )) : null
             }
             {

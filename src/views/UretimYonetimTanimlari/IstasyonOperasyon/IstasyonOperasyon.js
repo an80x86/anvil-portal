@@ -10,8 +10,13 @@ class IstasyonOperasyon extends Component {
     this.props.getRecords(1);
   }
 
-  handleClick(e) {
-    this.props.getRecords(parseInt(e.target.id.replace('button',''),10));
+  pagerClick(e) {
+    this.props.getRecords(parseInt(e.target.id.replace('pager-',''),10));
+  }
+
+  onSort(e) {
+    //this.props.getRecords(parseInt(e.target.id.replace('button',''),10));
+    console.log(e.target.id.replace('title-',''));//e);
   }
 
   render() {
@@ -31,7 +36,8 @@ class IstasyonOperasyon extends Component {
                   seat={this.props.seat}
                   pages={this.props.pages}
                   onClickPrev={() => this.props.getRecords(this.props.seat-1)} 
-                  onClick={this.handleClick.bind(this)}
+                  onClick={this.pagerClick.bind(this)}
+                  onSort={this.onSort.bind(this)}
                   onClickNext={() => this.props.getRecords(this.props.seat+1)}
                 />
               </CardBody>
