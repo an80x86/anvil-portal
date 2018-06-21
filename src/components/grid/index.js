@@ -9,13 +9,13 @@ export class MyGrid extends Component {
         return (
 
             <div>
-                <PreloaderIcon style={{display: this.props.loading ? 'block' : 'none' }} loader={Oval} size={30} strokeWidth={8} strokeColor="#006064" duration={800} /> 
-                <MyTable data={this.props.response} /> 
-                <MyPages seat={this.props.seat} 
+                <MyTable style={{display: !this.props.loading ? 'block' : 'none' }} data={this.props.response} /> 
+                <MyPages style={{display: !this.props.loading ? 'block' : 'none' }} seat={this.props.seat} 
                   pages={this.props.pages} 
                   onClickPrev={this.props.onClickPrev} 
                   onClick={this.props.onClick}
                   onClickNext={this.props.onClickNext} />
+                <PreloaderIcon style={{display: this.props.loading ? 'block' : 'none' }} loader={Oval} size={30} strokeWidth={8} strokeColor="#006064" duration={0} />
             </div>
         );
     }

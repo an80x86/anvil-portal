@@ -7,7 +7,7 @@ export const getRecords = (seat) => {
 
         dispatch({type: SELECT_PAGE_SO, payload: seat});
 
-        axios.get('http://localhost:3004/stationoperations?_start='+((seat-1) * 10)+'&_limit=10')
+        axios.get('http://localhost:3006/api/starships?offset='+((seat-1) * 10)+'&limit=10')
         .then(function (response) {
             dispatch({
                 type: ALL_SO,

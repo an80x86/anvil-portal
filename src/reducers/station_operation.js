@@ -15,9 +15,9 @@ export default (state = INITIAL_STATE, action) => {
         case SELECT_PAGE_SO:
             return { ...state, seat: action.payload }
         case ALL_SO:
-            const { headers, data } = action.payload;
+            const { data, count } = action.payload.data;
             let temp = [];
-            for (let i = 0; i < JSON.parse(JSON.stringify(headers).replace("x-total-count", "count")).count/10; i += 1) {
+            for (let i = 0; i < JSON.parse(count,10)/10; i += 1) {
                 temp[i] = (i+1);
             }        
             return { ...state, 
