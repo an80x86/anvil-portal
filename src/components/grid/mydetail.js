@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Badge } from 'reactstrap';
+
 
 export class MyDetail extends Component {
     resolveTitle(request) {
@@ -10,9 +12,12 @@ export class MyDetail extends Component {
     }
 
     resolveDetail(data, title) {
-        return title.map( (item,i) => (
+        let ret = title.map( (item,i) => (
           <td key={i}>{data[item]}</td>
         ));
+
+        ret.push(<td key='xx999'><Badge color="success" id={`edit-${data.id}`} onClick={this.props.onClickEdit}>Edit</Badge> &nbsp;<Badge color="danger" id={`remove-${data.id}`} onClick={this.props.onClickRemove}>Remove</Badge></td>)
+        return ret;
     }
 
     render() {

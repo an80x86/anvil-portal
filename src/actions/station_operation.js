@@ -1,4 +1,4 @@
-import { WAIT_SO, ALL_SO, SELECT_PAGE_SO } from './types';
+import { WAIT_SO, ALL_SO, SELECT_PAGE_SO, ITEM_SO } from './types';
 import axios from 'axios';
 
 export const getRecords = (seat) => {
@@ -12,6 +12,20 @@ export const getRecords = (seat) => {
             dispatch({
                 type: ALL_SO,
                 payload: response
+            })
+        });
+    }
+}
+
+export const getRecord = (id) => {
+    return (dispatch) => {
+        dispatch({type: WAIT_SO}); // login islemine basla loading'i baslat
+        
+        axios.get('http://localhost:3006/api/starships/'+id)
+        .then(function (response) {
+            dispatch({
+                type: ITEM_SO,
+                payload: response.data
             })
         });
     }

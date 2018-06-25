@@ -17,6 +17,8 @@ export class MyGrid extends Component {
                     onClick={this.props.onClick}
                     onClickNext={this.props.onClickNext} 
                     onSort={this.props.onSort}
+                    onClickEdit={this.props.onClickEdit} 
+                    onClickRemove={this.props.onClickRemove}
                 />
                 <PreloaderIcon style={{display: this.props.loading ? 'block' : 'none' }} loader={Oval} size={30} strokeWidth={8} strokeColor="#006064" duration={0} />
             </div>

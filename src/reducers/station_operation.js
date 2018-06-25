@@ -1,4 +1,4 @@
-import { WAIT_SO, ALL_SO, SELECT_PAGE_SO } from '../actions/types';
+import { WAIT_SO, ALL_SO, SELECT_PAGE_SO, ITEM_SO } from '../actions/types';
 
 const INITIAL_STATE = {
     response: [],
@@ -14,6 +14,12 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, loading:true }
         case SELECT_PAGE_SO:
             return { ...state, seat: action.payload }
+        case ITEM_SO:
+            return { 
+                ...state, 
+                loading:false, 
+                edit: action.payload.data
+            }
         case ALL_SO:
             const { data, count } = action.payload.data;
             let temp = [];

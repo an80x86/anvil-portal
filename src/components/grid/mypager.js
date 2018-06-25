@@ -4,7 +4,7 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 export class MyPager extends Component {
     render() {
         return (
-            <Pagination>
+            <Pagination style={{'float':'right'}}>
             {
             this.props.seat === 1 ? 
             <PaginationItem disabled><PaginationLink previous tag="button" onClick={this.props.onClickPrev}>Prev</PaginationLink></PaginationItem>

@@ -12,9 +12,9 @@ export class MyTable extends Component {
         <div>
           <Table responsive striped hover>
             <MyHeader title={this.props.data} onSort={this.props.onSort} /> 
-            <MyDetail data={this.props.data} />
+            <MyDetail data={this.props.data} onClickEdit={this.props.onClickEdit} onClickRemove={this.props.onClickRemove} />
           </Table>
-          <MyPager 
+          <MyPager
             seat={this.props.seat} 
             pages={this.props.pages} 
             onClickPrev={this.props.onClickPrev} 

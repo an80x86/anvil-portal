@@ -13,3 +13,5 @@ export const CLOSE_APP = 'CLOSE_APP';
 export const WAIT_SO = 'WAIT_SO';
 export const SELECT_PAGE_SO = 'SELECT_PAGE_SO';
 export const ALL_SO = 'ALL_SO';
+export const ITEM_SO = 'ITEM_SO';
+

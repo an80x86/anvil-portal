@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
-import { getRecords } from '../../../actions';
+import { Card, CardBody, CardHeader, Col, Row, FormGroup, Label, Input, } from 'reactstrap';
+import { getRecords, getRecord } from '../../../actions';
 import { MyGrid } from    '../../../components/grid/';
+import { getClickTitleRemove, getClickPager, getClickSort, getClickEdit } from '../../../utils';
 
 class IstasyonOperasyon extends Component {
 
@@ -11,16 +12,53 @@ class IstasyonOperasyon extends Component {
   }
 
   pagerClick(e) {
-    this.props.getRecords(parseInt(e.target.id.replace('pager-',''),10));
+    this.props.getRecords(getClickPager(e));
   }
 
   onSort(e) {
-    //this.props.getRecords(parseInt(e.target.id.replace('button',''),10));
-    console.log(e.target.id.replace('title-',''));//e);
+    console.log(getClickSort(e));
   }
 
-  render() {
+  onClickEdit(e) {
+    this.props.getRecord(1);
+  }
 
+  onClickRemove(e) {
+    console.log(getClickTitleRemove(e));
+  }
+
+  editView(elems) {
+    console.log(elems);
+    return (
+      <div className="animated fadeIn">
+        <Row>
+          <Col>
+            <Card>
+              
+            <CardHeader>
+                <strong>İstasyon Tanımları</strong>
+                <small> {elems.id}</small>
+              </CardHeader>
+              <CardBody>
+                
+                <Row>
+                  <Col xs="12">
+                    <FormGroup>
+                      <Label htmlFor="name">Name</Label>
+                      <Input type="text" id="name" placeholder="Enter your name" required />
+                    </FormGroup>
+                  </Col>
+                </Row>
+
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+
+  gridView() {
     return (
       <div className="animated fadeIn">
         <Row>
@@ -39,6 +77,8 @@ class IstasyonOperasyon extends Component {
                   onClick={this.pagerClick.bind(this)}
                   onSort={this.onSort.bind(this)}
                   onClickNext={() => this.props.getRecords(this.props.seat+1)}
+                  onClickEdit={this.onClickEdit.bind(this)} 
+                  onClickRemove={this.onClickRemove.bind(this)}
                 />
               </CardBody>
             </Card>
@@ -47,13 +87,19 @@ class IstasyonOperasyon extends Component {
       </div>
     );
   }
+
+  render() {
+  if (this.props.edit) return (this.editView(this.props.edit));
+    else return (this.gridView());
+  }
 }
 
 const mapStateToProps = ({ stationoperationResponse }) => {
-  const { response, loading, error, pages, seat } = stationoperationResponse;
+  const { response, edit, loading, error, pages, seat } = stationoperationResponse;
 
   return {
-    response, 
+    response,
+    edit,
     loading, 
     error,
     pages,
@@ -61,4 +107,5 @@ const mapStateToProps = ({ stationoperationResponse }) => {
   }
 }
 
-export default connect(mapStateToProps,{ getRecords })(IstasyonOperasyon);
+export default connect(mapStateToProps,{ getRecords, getRecord })(IstasyonOperasyon);
+//export default connect(mapStateToProps, mapDispatchToProps)(IstasyonOperasyon);
